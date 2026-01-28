@@ -4,10 +4,10 @@ import { TESTIMONIALS } from '../constants';
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="py-24 px-6 bg-[#fdf1d6] border-t-8 border-black relative">
+    <section id="testimonials" className="py-24 px-6 border-t-8 border-black relative">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-8xl font-comic text-black mb-4 italic">
+          <h2 className="text-6xl md:text-8xl font-comic text-black mb-4">
             THEY <span className="text-[#d32f2f]">PROVED</span> IT!
           </h2>
           <p className="font-typewriter text-xl max-w-2xl mx-auto uppercase font-bold text-black/60 tracking-tighter">
@@ -19,7 +19,7 @@ const Testimonials: React.FC = () => {
           {TESTIMONIALS.map((t, i) => (
             <div 
               key={i} 
-              className={`bg-white border-4 border-black p-8 relative shadow-[10px_10px_0px_rgba(0,0,0,0.1)] transition-transform hover:scale-105 ${
+              className={`bg-white/40 backdrop-blur-md border-4 border-black p-8 relative shadow-[10px_10px_0px_rgba(0,0,0,0.1)] transition-transform hover:scale-105 ${
                 i % 2 === 0 ? 'rotate-[1.5deg]' : 'rotate-[-1.5deg]'
               }`}
             >
@@ -35,7 +35,7 @@ const Testimonials: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h4 className="font-comic text-2xl text-[#d32f2f] leading-none mb-1 uppercase italic">{t.author}</h4>
+                  <h4 className="font-comic text-2xl text-[#d32f2f] leading-none mb-1 uppercase">{t.author}</h4>
                   <p className="font-typewriter text-[10px] tracking-widest uppercase text-zinc-500 font-bold">{t.role}</p>
                 </div>
               </div>
@@ -44,7 +44,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute -top-2 -left-2 text-[#d32f2f] opacity-20">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.56929 13 5.017 13H2.017V21H5.017Z" /></svg>
                 </div>
-                <p className="font-typewriter text-sm leading-relaxed text-black/80 pl-6 italic mb-6">
+                <p className="font-typewriter text-sm leading-relaxed text-black/80 pl-6 mb-6">
                   {t.quote}
                 </p>
               </div>
@@ -61,7 +61,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         <div className="mt-20 text-center">
-          <p className="font-handwriting text-3xl mb-4 italic">Will YOU be the next success story?</p>
+          <p className="font-handwriting text-3xl mb-4">Will YOU be the next success story?</p>
           <div className="w-48 h-1 bg-black mx-auto mb-4"></div>
           <p className="font-comic text-xl text-zinc-500 tracking-[0.2em]">SINCE 1994 - RESULTS SPEAK LOUDER THAN WORDS</p>
         </div>

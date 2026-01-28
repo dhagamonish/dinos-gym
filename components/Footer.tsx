@@ -4,7 +4,7 @@ import { NAV_ITEMS, INSTAGRAM_URL } from '../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#fdf1d6] border-t-8 border-black pt-20 pb-10 relative overflow-hidden">
+    <footer className="border-t-8 border-black pt-20 pb-10 relative overflow-hidden vintage-paper-texture">
       {/* Decorative Stamp */}
       <div className="absolute top-10 right-10 w-48 h-48 opacity-10 rotate-12 pointer-events-none">
         <div className="w-full h-full border-8 border-[#d32f2f] rounded-full flex items-center justify-center text-[#d32f2f] font-comic text-4xl text-center leading-none p-4 uppercase">
@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 lg:col-span-1">
             <div className="flex items-center gap-4 mb-8">
               <Logo className="w-16 h-16" />
-              <div className="font-comic text-3xl text-black leading-none uppercase italic">
+              <div className="font-comic text-3xl text-black leading-none uppercase">
                 DINO'S <br/> GYM
               </div>
             </div>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase italic border-b-2 border-black inline-block">MAP YOUR PATH</h4>
+            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase border-b-2 border-black inline-block">MAP YOUR PATH</h4>
             <ul className="space-y-4">
               {NAV_ITEMS.map(item => (
                 <li key={item.label}>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase italic border-b-2 border-black inline-block">ENROLLMENT</h4>
+            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase border-b-2 border-black inline-block">ENROLLMENT</h4>
             <ul className="space-y-4">
               {['Standard Access', 'Student Discount', 'Corporate (JLR)', 'Day Passes'].map(link => (
                 <li key={link}>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase italic border-b-2 border-black inline-block">THE SOCIALS</h4>
+            <h4 className="font-comic text-2xl text-[#d32f2f] mb-8 uppercase border-b-2 border-black inline-block">THE SOCIALS</h4>
             <div className="flex flex-col space-y-4">
               <a href={INSTAGRAM_URL} className="font-typewriter text-sm font-bold hover:text-[#d32f2f] uppercase transition-colors">
                 Instagram Feed
@@ -86,6 +86,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}; export default Footer;

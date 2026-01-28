@@ -47,10 +47,10 @@ const Gallery: React.FC = () => {
   }, [selectedIndex, handleNext, handlePrev]);
 
   return (
-    <section id="gallery" className="py-24 bg-[#fdf1d6] border-y-8 border-black">
+    <section id="gallery" className="py-24 border-y-8 border-black relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-6xl md:text-8xl font-comic text-black mb-2 italic">
+          <h2 className="text-6xl md:text-8xl font-comic text-black mb-2">
             THE <span className="text-[#d32f2f]">WALL</span> OF IRON
           </h2>
           <p className="font-typewriter text-xl text-black/60 uppercase tracking-tighter">Snapshots from the dungeon floor</p>
@@ -61,7 +61,7 @@ const Gallery: React.FC = () => {
             <div 
               key={i} 
               onClick={() => setSelectedIndex(i)}
-              className={`relative group overflow-hidden border-4 border-black bg-white p-2 break-inside-avoid shadow-[8px_8px_0px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 hover:shadow-[12px_12px_0px_rgba(0,0,0,0.2)] cursor-zoom-in ${
+              className={`relative group overflow-hidden border-4 border-black bg-white/40 backdrop-blur-sm p-2 break-inside-avoid shadow-[8px_8px_0px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 hover:shadow-[12px_12px_0px_rgba(0,0,0,0.2)] cursor-zoom-in ${
                 i % 2 === 0 ? 'rotate-1' : '-rotate-1'
               }`}
             >

@@ -40,7 +40,7 @@ const StatBadge: React.FC<{
 
 const WhyChoose: React.FC = () => {
   return (
-    <section id="why-choose" className="py-24 px-6 bg-[#fdf1d6] relative overflow-visible">
+    <section id="why-choose" className="py-24 px-6 relative overflow-visible">
       {/* Subtle halftone overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/halftone.png')]"></div>
       
@@ -57,7 +57,7 @@ const WhyChoose: React.FC = () => {
               { icon: <Zap size={40} />, title: "THE IRON", desc: "Vintage iron meet modern engineering for max load." },
               { icon: <Target size={40} />, title: "RESULTS!", desc: "Our wall of transformations speaks for itself." }
             ].map((f, i) => (
-              <div key={i} className="bg-white border-4 border-black p-6 shadow-[6px_6px_0px_#1a1a1a] hover:-translate-y-2 transition-all group">
+              <div key={i} className="bg-white/40 backdrop-blur-sm border-4 border-black p-6 shadow-[6px_6px_0px_#1a1a1a] hover:-translate-y-2 transition-all group">
                 <div className="text-[#d32f2f] mb-4 group-hover:scale-110 transition-transform">{f.icon}</div>
                 <h4 className="font-comic text-3xl text-black mb-2">{f.title}</h4>
                 <p className="text-sm font-bold uppercase leading-tight text-black/70">{f.desc}</p>
@@ -71,7 +71,7 @@ const WhyChoose: React.FC = () => {
         </div>
 
         <div className="relative mt-16 lg:mt-0">
-          <div className="retro-border bg-white p-2 transform rotate-[-2deg] relative shadow-[15px_15px_0px_rgba(0,0,0,0.05)]">
+          <div className="retro-border bg-white/40 backdrop-blur-sm p-2 transform rotate-[-2deg] relative shadow-[15px_15px_0px_rgba(0,0,0,0.05)]">
             <img 
               src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1200" 
               alt="Hardcore Gym Environment" 

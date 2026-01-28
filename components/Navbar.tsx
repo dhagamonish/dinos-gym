@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed w-full z-[60] bg-[#fdf1d6] border-b-4 border-black py-2">
+    <nav className="fixed w-full z-[60] vintage-paper-texture border-b-4 border-black py-2 bg-[#f0e6d2]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center gap-3">
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
               <button 
                 onClick={toggleFullscreen}
                 title="Toggle Fullscreen"
-                className="p-2 border-2 border-black bg-white hover:bg-yellow-400 transition-colors shadow-[2px_2px_0px_#000]"
+                className="p-2 border-2 border-black bg-white/50 hover:bg-yellow-400 transition-colors shadow-[2px_2px_0px_#000]"
               >
                 {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
               </button>
@@ -68,13 +68,13 @@ const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center gap-4">
             <button 
               onClick={toggleFullscreen}
-              className="p-2 border-2 border-black bg-white"
+              className="p-2 border-2 border-black bg-white/50"
             >
               {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 border-4 border-black bg-white"
+              className="p-2 border-4 border-black bg-white/50"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-screen bg-[#fdf1d6] border-b-4 border-black' : 'max-h-0'}`}>
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-screen vintage-paper-texture border-b-4 border-black bg-[#f0e6d2]' : 'max-h-0'}`}>
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
           {NAV_ITEMS.map((item) => (
             <a

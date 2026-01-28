@@ -4,7 +4,7 @@ import AnimateOnScroll from './AnimateOnScroll';
 
 const Hero: React.FC = () => {
   const [year, setYear] = useState(1990);
-  const [tagline, setTagline] = useState('Home of Iron');
+  const [tagline] = useState('Home of Iron');
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -22,23 +22,13 @@ const Hero: React.FC = () => {
       return () => clearInterval(interval);
     }, 1000);
 
-    // Tagline Transition Animation
-    const taglineTimer = setTimeout(() => {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setTagline('Where Legends Are Forged');
-        setIsAnimating(false);
-      }, 500);
-    }, 3000);
-
     return () => {
       clearTimeout(timer);
-      clearTimeout(taglineTimer);
     };
   }, []);
 
   return (
-    <section id="home" className="relative min-h-[90vh] flex items-center pt-24 pb-12 px-6 overflow-hidden bg-[#fdf1d6]">
+    <section id="home" className="relative min-h-[90vh] flex items-center pt-24 pb-12 px-6 overflow-hidden">
       {/* Gritty Texture Overlay */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
       
@@ -47,7 +37,7 @@ const Hero: React.FC = () => {
         SOLIHULL
       </div>
       
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+      <div className="max-w-7xl auto w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
         <div>
           <AnimateOnScroll variant="left" delay={100}>
             <div className="inline-flex items-center gap-2 mb-6">
@@ -59,7 +49,7 @@ const Hero: React.FC = () => {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="left" delay={300}>
-            <h1 className="text-7xl md:text-[110px] font-comic-bold leading-[0.85] mb-8 tracking-tighter uppercase italic drop-shadow-sm">
+            <h1 className="text-7xl md:text-[110px] font-comic-bold leading-[0.85] mb-8 tracking-tighter uppercase drop-shadow-sm">
               Solihull's <br/>
               <span className="text-[#d32f2f] relative">
                 Original
@@ -72,7 +62,7 @@ const Hero: React.FC = () => {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="left" delay={500}>
-            <div className="font-typewriter text-xl text-black/80 max-w-lg mb-12 leading-tight bg-white/40 p-4 border-l-4 border-black italic">
+            <div className="font-typewriter text-xl text-black/80 max-w-lg mb-12 leading-tight bg-white/20 backdrop-blur-sm p-4 border-l-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,0.05)]">
               "Building world-class physiques since the golden era of Solihull bodybuilding. Join the family of iron today."
             </div>
           </AnimateOnScroll>
@@ -87,7 +77,7 @@ const Hero: React.FC = () => {
               </button>
               <a 
                 href="#about" 
-                className="inline-flex items-center justify-center px-12 py-6 border-4 border-black bg-white/50 font-comic text-3xl hover:bg-white transition-all shadow-[6px_6px_0px_rgba(0,0,0,0.1)]"
+                className="inline-flex items-center justify-center px-12 py-6 border-4 border-black bg-white/30 backdrop-blur-sm font-comic text-3xl hover:bg-white/50 transition-all shadow-[6px_6px_0px_rgba(0,0,0,0.1)]"
               >
                 OUR STORY
               </a>
@@ -97,7 +87,7 @@ const Hero: React.FC = () => {
 
         <div className="relative">
           <AnimateOnScroll variant="scale" delay={400}>
-            <div className="relative border-8 border-black p-2 bg-white transform rotate-3 shadow-[20px_20px_0px_#1a1a1a] group">
+            <div className="relative border-8 border-black p-2 bg-white/40 backdrop-blur-sm transform rotate-3 shadow-[20px_20px_0px_#1a1a1a] group">
               <img 
                 src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200" 
                 alt="Hardcore Bodybuilding Gym Solihull" 

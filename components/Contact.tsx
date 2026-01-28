@@ -4,12 +4,12 @@ import { INSTAGRAM_URL } from '../constants';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-white border-b-8 border-black relative">
+    <section id="contact" className="py-24 border-b-8 border-black relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           
-          <div className="bg-[#fdf1d6] border-8 border-black p-10 shadow-[15px_15px_0px_#1a1a1a] transform -rotate-1">
-            <h2 className="text-6xl md:text-7xl font-comic text-[#d32f2f] mb-8 leading-none italic uppercase">
+          <div className="vintage-paper-texture border-8 border-black p-10 shadow-[15px_15px_0px_#1a1a1a] transform -rotate-1">
+            <h2 className="text-6xl md:text-7xl font-comic text-[#d32f2f] mb-8 leading-none uppercase">
               REACH OUT! ☎️
             </h2>
             
@@ -45,16 +45,16 @@ const Contact: React.FC = () => {
                 <div>
                   <h4 className="text-black font-comic text-2xl mb-1 uppercase">HOTLINE</h4>
                   <p className="font-typewriter text-lg">Ph: +44 121 745 9999</p>
-                  <p className="font-typewriter text-sm text-black/60 italic">Ask for the Head Coach!</p>
+                  <p className="font-typewriter text-sm text-black/60">Ask for the Head Coach!</p>
                 </div>
               </div>
             </div>
 
             <div className="mt-12 pt-8 border-t-4 border-black flex gap-6">
-              <a href={INSTAGRAM_URL} className="bg-white border-4 border-black p-4 hover:bg-[#d32f2f] hover:text-white transition-all transform hover:scale-110">
+              <a href={INSTAGRAM_URL} className="bg-white/50 border-4 border-black p-4 hover:bg-[#d32f2f] hover:text-white transition-all transform hover:scale-110">
                 <Instagram size={32} />
               </a>
-              <a href="#" className="bg-white border-4 border-black p-4 hover:bg-[#26a69a] hover:text-white transition-all transform hover:scale-110">
+              <a href="#" className="bg-white/50 border-4 border-black p-4 hover:bg-[#26a69a] hover:text-white transition-all transform hover:scale-110">
                 <Facebook size={32} />
               </a>
             </div>
@@ -62,14 +62,14 @@ const Contact: React.FC = () => {
 
           <div className="relative group">
             <div className="absolute inset-0 bg-[#d32f2f] transform rotate-2 -z-10 border-4 border-black"></div>
-            <div className="h-[600px] border-4 border-black relative overflow-hidden bg-white shadow-[12px_12px_0px_rgba(0,0,0,0.1)]">
+            <div className="h-[600px] border-4 border-black relative overflow-hidden bg-white/40 shadow-[12px_12px_0px_rgba(0,0,0,0.1)]">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-paper.png')] opacity-30 pointer-events-none z-10"></div>
               
-              <div className="absolute inset-0 flex items-center justify-center flex-col p-10 text-center bg-[#f0f0f0]">
-                <div className="w-24 h-24 bg-white border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-[4px_4px_0px_#d32f2f] animate-bounce">
+              <div className="absolute inset-0 flex items-center justify-center flex-col p-10 text-center bg-transparent">
+                <div className="w-24 h-24 bg-white/80 border-4 border-black rounded-full flex items-center justify-center mb-6 shadow-[4px_4px_0px_#d32f2f] animate-bounce">
                   <MapPin size={48} className="text-[#d32f2f]" />
                 </div>
-                <h3 className="text-black font-comic text-5xl mb-4 uppercase italic">FIND THE DUNGEON</h3>
+                <h3 className="text-black font-comic text-5xl mb-4 uppercase">FIND THE DUNGEON</h3>
                 <p className="font-typewriter text-lg mb-8 max-w-sm">Just off the M42. Look for the yellow signs and the sound of clanking iron.</p>
                 
                 <a 

@@ -15,7 +15,6 @@ const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => 
           {/* Arched Text Paths */}
           <defs>
             <path id="topTextPath" d="M 15,50 A 35,35 0 0,1 85,50" />
-            {/* Fix: Reversed the path direction for the bottom text to avoid using the unsupported 'side' attribute */}
             <path id="bottomTextPath" d="M 85,50 A 35,35 0 0,1 15,50" />
           </defs>
 
@@ -28,7 +27,6 @@ const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => 
 
           {/* Bottom Text: SOLIHULL */}
           <text fill="black" fontSize="10" fontWeight="900" className="font-comic uppercase tracking-widest">
-            {/* Fix: Removed unsupported 'side' attribute and simplified textPath to satisfy TypeScript requirements while maintaining layout */}
             <textPath href="#bottomTextPath" startOffset="50%" textAnchor="middle">
               SOLIHULL
             </textPath>

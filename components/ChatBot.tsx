@@ -25,7 +25,7 @@ const ChatBot: React.FC = () => {
     if (isOpen) scrollToBottom();
   }, [messages, isOpen]);
 
-  // Simple formatter to handle bolding (**text**) and basic lists (* item)
+  // Simple formatter to handle bolding (**text**) and basic lists (* item) - NO ITALICS
   const formatMessage = (text: string) => {
     return text.split('\n').map((line, i) => {
       // Handle Bold text
@@ -61,12 +61,14 @@ const ChatBot: React.FC = () => {
       const gymContext = `
         Dino's Gym Solihull Info:
         - Location: Unit 1-3, Cranmore Blvd, Solihull, B90 4RR.
-        - Est: 1994.
-        - Vibe: Hardcore, old-school, iron weights, no ego.
+        - Est: 1994 by local legends.
+        - Philosophy: Hardcore, old-school, iron weights, zero ego policy.
+        - Equipment: Cybex, Hammer Strength, vintage specialized machines.
         - Programs: ${PROGRAMS.map(p => p.title + ': ' + p.desc).join(', ')}.
-        - Memberships: ${MEMBERSHIP_PLANS.map(p => p.name + ' ($' + p.price + ')').join(', ')}.
+        - Memberships: ${MEMBERSHIP_PLANS.map(p => p.name + ' (£' + p.price + ')').join(', ')}.
         - Facilities: ${FACILITIES.map(f => f.title).join(', ')}.
         - Hours: Mon-Fri 6am-10pm, Sat 8am-6pm, Sun 8am-4pm.
+        - Atmosphere: No fluff, just results. We don't have fancy chrome; we have the method.
       `;
 
       const response = await ai.models.generateContent({
@@ -75,24 +77,34 @@ const ChatBot: React.FC = () => {
           parts: [{ text: m.text }]
         })),
         config: {
-          systemInstruction: `You are the "Dino Coach", a respectful but firm legendary bodybuilding mentor at Dino's Gym Solihull. 
-          Your tone is disciplined, motivating, and strictly old-school. You treat the user as a "Disciple" of the iron.
-          FORMATTING RULES:
-          1. Use **bold** for emphasis on important details like times, prices, or key motivational phrases.
-          2. Use clear, bulleted lists using '*' for schedules or membership benefits.
-          3. Ensure each point is on a new line.
-          TONE RULES:
-          - Avoid being rude. Be an encouraging guide who emphasizes consistency and hard work.
-          - Use 90s bodybuilding slang like "iron", "dungeon", "gains", "pure effort".
-          STRICT GUARDRAILS:
-          1. ONLY answer questions related to Dino's Gym, training, bodybuilding, powerlifting, or gym services.
-          2. If the user asks about unrelated topics, politely refocus them: "That won't help your squat! Let's get our minds back on the iron."
-          3. Use this context: ${gymContext}.`,
-          temperature: 0.7,
+          systemInstruction: `You are the "Dino Coach", the legendary mentor of Dino's Gym Solihull. 
+          Your mission is to guide disciples in the way of iron.
+
+          CORE CHARACTER RULES:
+          1. TONE: Disciplined, motivating, firm, and respectful. You are a mentor, not a servant. 
+          2. LANGUAGE: Use 90s bodybuilding slang (iron, dungeon, gains, pure effort, the method).
+          3. IDENTITY: You are a coach. You live for the gym. 
+          4. NO ITALICS: Do not use any italics or underscores for emphasis. Use bolding with ** if needed.
+
+          STRICT SAFETY GUARDRAILS (ZERO TOLERANCE):
+          - CATEGORY 1: Non-Gym Topics (Politics, Weather, Movies, News, etc.). 
+            ACTION: Politely but firmly redirect. Example: "Discipline means focus. That topic doesn't add plates to the bar. Let's get our minds back on your training at Dino's."
+          - CATEGORY 2: Personal AI Life / Ethics / Competitors.
+            ACTION: Dismiss with a mentor's wisdom. Example: "I don't waste time thinking about other gyms or philosophical fluff. I only care about the iron and the results we get here in Solihull."
+          - CATEGORY 3: Medical Advice.
+            ACTION: Remind them to be smart. Example: "I'm a coach, not a doctor. If you're injured, see a professional. If you're ready to work, I've got the weights."
+
+          FORMATTING:
+          - Always use **bold** for key info (times, prices, membership names).
+          - Use '*' for lists (like hours or benefits).
+          - NEVER USE ITALICS.
+          
+          CONTEXT TO USE: ${gymContext}.`,
+          temperature: 0.6,
         }
       });
 
-      const botText = response.text || "I'm checking the logbooks. Ask me again in a moment!";
+      const botText = response.text || "My focus slipped for a second. Ask me again about the iron!";
       setMessages(prev => [...prev, { role: 'model', text: botText }]);
     } catch (error) {
       console.error("AI Error:", error);
@@ -119,9 +131,9 @@ const ChatBot: React.FC = () => {
           <div className="bg-[#1a1a1a] text-white p-4 border-b-4 border-black flex justify-between items-center">
             <div className="flex items-center gap-3">
               <Dumbbell className="text-yellow-400" />
-              <span className="text-xl uppercase tracking-widest italic">THE COACH IS IN!</span>
+              <span className="text-xl uppercase tracking-widest font-bold">THE COACH IS IN!</span>
             </div>
-            <div className="text-[10px] font-typewriter opacity-60 uppercase">Unit 1-3 Cranmore</div>
+            <div className="text-[10px] font-typewriter opacity-60 uppercase tracking-tighter">EST. 1994 SOLIHULL</div>
           </div>
 
           {/* Messages Area */}
@@ -147,8 +159,8 @@ const ChatBot: React.FC = () => {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-yellow-400 border-2 border-black p-2 font-comic animate-pulse">
-                  COACH IS THINKING...
+                <div className="bg-yellow-400 border-2 border-black p-2 font-comic animate-pulse shadow-[2px_2px_0px_#000]">
+                  COACH IS FORMULATING...
                 </div>
               </div>
             )}
@@ -164,12 +176,12 @@ const ChatBot: React.FC = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                 placeholder="Ask about the method..."
-                className="flex-1 border-4 border-black p-2 font-typewriter text-sm outline-none focus:bg-yellow-50"
+                className="flex-1 border-4 border-black p-2 font-typewriter text-sm outline-none focus:bg-yellow-50 placeholder:font-bold"
               />
               <button
                 onClick={handleSend}
                 disabled={isLoading}
-                className="bg-[#d32f2f] text-white p-2 border-4 border-black shadow-[3px_3px_0px_#000] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all"
+                className="bg-[#d32f2f] text-white p-2 border-4 border-black shadow-[3px_3px_0px_#000] active:shadow-none active:translate-x-1 active:translate-y-1 transition-all disabled:opacity-50"
               >
                 <Send size={20} />
               </button>
@@ -179,6 +191,4 @@ const ChatBot: React.FC = () => {
       )}
     </div>
   );
-};
-
-export default ChatBot;
+}; export default ChatBot;
