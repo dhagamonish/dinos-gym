@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center gap-3">
-            <Logo className="w-14 h-14" />
+            <Logo className="w-16 h-16" />
           </div>
           
           <div className="hidden md:block">

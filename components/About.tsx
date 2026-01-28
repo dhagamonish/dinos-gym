@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const About: React.FC = () => {
@@ -9,7 +8,7 @@ const About: React.FC = () => {
           
           <div className="order-2 lg:order-1">
             <h2 className="text-6xl md:text-8xl font-comic text-[#d32f2f] mb-8 leading-none transform -rotate-1">
-              THE LEGACY! 💣💥
+              THE LEGACY!
             </h2>
             <div className="space-y-6 text-black text-lg leading-relaxed font-bold bg-[#fdf1d6] p-8 border-4 border-black shadow-[8px_8px_0px_#1a1a1a]">
               <p className="text-2xl text-[#d32f2f] font-comic">
