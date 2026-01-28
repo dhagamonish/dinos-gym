@@ -1,14 +1,32 @@
-
-import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Maximize, Minimize } from 'lucide-react';
 import { NAV_ITEMS, SIGNUP_URL } from '../constants';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  };
 
   return (
-    <nav className="fixed w-full z-50 bg-[#fdf1d6] border-b-4 border-black py-2">
+    <nav className="fixed w-full z-[60] bg-[#fdf1d6] border-b-4 border-black py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center gap-3">
@@ -26,6 +44,16 @@ const Navbar: React.FC = () => {
                   {item.label}
                 </a>
               ))}
+              
+              {/* Fullscreen Toggle */}
+              <button 
+                onClick={toggleFullscreen}
+                title="Toggle Fullscreen"
+                className="p-2 border-2 border-black bg-white hover:bg-yellow-400 transition-colors shadow-[2px_2px_0px_#000]"
+              >
+                {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+              </button>
+
               <a
                 href={SIGNUP_URL}
                 target="_blank"
@@ -37,7 +65,13 @@ const Navbar: React.FC = () => {
             </div>
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-4">
+            <button 
+              onClick={toggleFullscreen}
+              className="p-2 border-2 border-black bg-white"
+            >
+              {isFullscreen ? <Minimize size={20} /> : <Maximize size={20} />}
+            </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 border-4 border-black bg-white"
