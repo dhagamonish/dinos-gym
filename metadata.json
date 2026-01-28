@@ -1,0 +1,7 @@
+{
+  "name": "Dino's Gym Solihull",
+  "description": "An iconic, hardcore bodybuilding and powerlifting gym website in Solihull, UK, featuring old-school equipment and a legendary community atmosphere.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
