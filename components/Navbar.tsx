@@ -1,37 +1,27 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_ITEMS, SIGNUP_URL } from '../constants';
 import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-2 shadow-2xl' : 'bg-transparent py-4'}`}>
+    <nav className="fixed w-full z-50 bg-[#fdf1d6] border-b-4 border-black py-2">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0 flex items-center gap-3">
-            <Logo className="w-12 h-12" />
-            <span className="font-heading text-2xl hidden md:block text-[#FFB800]">DINO'S GYM</span>
+            <Logo className="w-14 h-14" />
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-center space-x-8">
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-[#E63946] px-3 py-2 text-sm font-heading tracking-wider transition-colors"
+                  className="text-black hover:text-[#d32f2f] text-lg font-comic tracking-wider transition-colors"
                 >
                   {item.label}
                 </a>
@@ -40,9 +30,9 @@ const Navbar: React.FC = () => {
                 href={SIGNUP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#E63946] hover:bg-[#D62828] text-white px-6 py-2 rounded-none text-sm font-heading tracking-widest transition-all transform hover:scale-105 active:scale-95"
+                className="bg-[#d32f2f] text-white px-8 py-3 border-4 border-black font-comic text-xl shadow-[4px_4px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all"
               >
-                JOIN NOW
+                JOIN NOW!
               </a>
             </div>
           </div>
@@ -50,7 +40,7 @@ const Navbar: React.FC = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-zinc-800"
+              className="p-2 border-4 border-black bg-white"
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -59,14 +49,14 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-screen bg-black border-b border-zinc-800' : 'max-h-0'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <div className={`md:hidden transition-all duration-300 overflow-hidden ${isOpen ? 'max-h-screen bg-[#fdf1d6] border-b-4 border-black' : 'max-h-0'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
               href={item.href}
               onClick={() => setIsOpen(false)}
-              className="text-gray-300 hover:text-[#E63946] block px-3 py-4 text-base font-heading tracking-wider border-b border-zinc-900"
+              className="text-black block px-3 py-6 text-2xl font-comic border-b-2 border-dotted border-black/20"
             >
               {item.label}
             </a>
@@ -75,9 +65,9 @@ const Navbar: React.FC = () => {
             href={SIGNUP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full bg-[#E63946] text-white block px-3 py-4 text-center font-heading tracking-widest mt-4"
+            className="w-full bg-[#d32f2f] text-white block px-3 py-6 font-comic text-3xl"
           >
-            JOIN NOW
+            JOIN NOW!
           </a>
         </div>
       </div>

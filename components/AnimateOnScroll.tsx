@@ -15,7 +15,7 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
   className = "", 
   variant = 'up',
   delay = 0,
-  threshold = 0.1,
+  threshold = 0.15,
   once = true
 }) => {
   const domRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,10 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
           setIsVisible(false);
         }
       });
-    }, { threshold });
+    }, { 
+      threshold,
+      rootMargin: '0px 0px -80px 0px' // Triggers slightly earlier for a smoother feel
+    });
 
     const currentRef = domRef.current;
     if (currentRef) observer.observe(currentRef);
