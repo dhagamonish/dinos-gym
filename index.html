@@ -24,6 +24,7 @@
         background-position: center;
         background-attachment: fixed;
         background-repeat: no-repeat;
+        overflow-x: hidden;
       }
       .font-heading {
         font-family: 'Anton', sans-serif;
@@ -135,8 +136,8 @@
     <!-- Entry Point Script -->
     <script type="module" src="index.tsx"></script>
   </head>
-  <body>
+  <body class="overflow-x-hidden">
     <div class="paper-texture-overlay"></div>
-    <div id="root"></div>
+    <div id="root" class="overflow-x-hidden"></div>
   </body>
 </html>
