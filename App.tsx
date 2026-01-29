@@ -1,17 +1,17 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About';
-import Programs from './components/Programs';
-import WhyChoose from './components/WhyChoose';
-import Facilities from './components/Facilities';
-import Memberships from './components/Memberships';
-import Testimonials from './components/Testimonials';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import AnimateOnScroll from './components/AnimateOnScroll';
-import ChatBot from './components/ChatBot';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import About from './components/About.tsx';
+import Programs from './components/Programs.tsx';
+import WhyChoose from './components/WhyChoose.tsx';
+import Facilities from './components/Facilities.tsx';
+import Memberships from './components/Memberships.tsx';
+import Testimonials from './components/Testimonials.tsx';
+import Gallery from './components/Gallery.tsx';
+import Contact from './components/Contact.tsx';
+import Footer from './components/Footer.tsx';
+import AnimateOnScroll from './components/AnimateOnScroll.tsx';
+import ChatBot from './components/ChatBot.tsx';
 
 const App: React.FC = () => {
   return (
