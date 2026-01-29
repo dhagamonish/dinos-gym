@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 
 interface AnimateOnScrollProps {
@@ -15,13 +14,18 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
   className = "", 
   variant = 'up',
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.05,
   once = true
 }) => {
   const domRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    if (!('IntersectionObserver' in window)) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -35,11 +39,19 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({
       });
     }, { 
       threshold,
-      rootMargin: '0px 0px -80px 0px' // Triggers slightly earlier for a smoother feel
+      rootMargin: '0px 0px 0px 0px'
     });
 
     const currentRef = domRef.current;
-    if (currentRef) observer.observe(currentRef);
+    if (currentRef) {
+      observer.observe(currentRef);
+      
+      // Immediate check for elements already in view
+      const rect = currentRef.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom >= 0) {
+        setIsVisible(true);
+      }
+    }
     
     return () => {
       if (currentRef) observer.unobserve(currentRef);
