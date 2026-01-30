@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth; scroll-padding-top: 80px;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -57,10 +58,22 @@
       .paper-texture-overlay {
         position: fixed;
         inset: 0;
-        background-image: url('https://www.transparenttextures.com/patterns/old-paper.png');
+        background-image: 
+          url('https://www.transparenttextures.com/patterns/old-paper.png'),
+          url('https://www.transparenttextures.com/patterns/pinstripe-dark.png');
         pointer-events: none;
         z-index: 9999;
-        opacity: 0.15;
+        opacity: 0.12;
+        mix-blend-mode: multiply;
+      }
+
+      .noise-overlay {
+        position: fixed;
+        inset: 0;
+        background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+        pointer-events: none;
+        z-index: 9998;
+        opacity: 0.05;
       }
 
       .retro-border {
@@ -139,6 +152,7 @@
   </head>
   <body class="overflow-x-hidden">
     <div class="paper-texture-overlay"></div>
+    <div class="noise-overlay"></div>
     <div id="root" class="overflow-x-hidden"></div>
   </body>
 </html>

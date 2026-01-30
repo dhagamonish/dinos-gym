@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { SIGNUP_URL } from '../constants.tsx';
 import AnimateOnScroll from './AnimateOnScroll.tsx';
@@ -8,8 +9,34 @@ const StatBadge: React.FC<{
   className: string; 
   shadowClass: string;
 }> = ({ value, label, className, shadowClass }) => {
+  const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  const displayValue = isHovered ? Math.floor(value * 1.1) : value;
+
+  useEffect(() => {
+    let startTime: number | null = null;
+    const duration = 2000; // 2 seconds animation
+    const startValue = 1;
+    const endValue = value;
+
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      // Simple easing: easeOutQuad
+      const easeProgress = progress === 1 ? 1 : 1 - Math.pow(1 - progress, 2);
+      const currentCount = Math.floor(easeProgress * (endValue - startValue) + startValue);
+      
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }, [value]);
+
+  const displayValue = isHovered ? Math.floor(count * 1.1) : count;
 
   return (
     <div 
@@ -88,7 +115,7 @@ const Hero: React.FC = () => {
           </AnimateOnScroll>
 
           <AnimateOnScroll variant="left" delay={500}>
-            <div className="font-typewriter text-lg sm:text-xl text-black/80 max-w-lg mb-8 sm:mb-12 leading-tight bg-white/20 backdrop-blur-sm p-4 border-l-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,0.05)] mx-auto lg:mx-0">
+            <div className="font-typewriter text-lg sm:text-xl text-black/80 max-w-lg mb-8 sm:mb-12 leading-tight bg-white/20 backdrop-blur-sm p-4 border-l-4 border-black shadow-[4px_4px_0px_rgba(0,0,0,0.05)] mx-auto lg:mx-0 font-bold">
               "Building world-class physiques since the golden era of Solihull bodybuilding. Join the family of iron today."
             </div>
           </AnimateOnScroll>
@@ -101,35 +128,27 @@ const Hero: React.FC = () => {
               >
                 JOIN THE LEGENDS!
               </button>
-              <a 
-                href="#about" 
-                className="inline-flex items-center justify-center px-8 sm:px-12 py-4 sm:py-6 border-4 border-black bg-white/30 backdrop-blur-sm font-comic text-2xl sm:text-3xl hover:bg-white/50 transition-all shadow-[4px_4px_0px_rgba(0,0,0,0.1)]"
-              >
-                OUR STORY
-              </a>
             </div>
           </AnimateOnScroll>
         </div>
 
         <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
           <AnimateOnScroll variant="scale" delay={400}>
-            {/* Removed rotation - straight container */}
             <div className="relative border-4 sm:border-8 border-black p-2 bg-white/40 backdrop-blur-sm shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[20px_20px_0px_#1a1a1a] group">
-              <div className="overflow-hidden border-2 border-black">
+              <div className="overflow-hidden border-2 border-black bg-zinc-800">
                 <img 
-                  src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80&w=1200" 
-                  alt="BE STRONG - Bodybuilding Legacy" 
-                  className="w-full h-auto object-cover contrast-150 brightness-90 grayscale group-hover:grayscale-0 transition-all duration-1000"
-                  style={{ filter: 'grayscale(1) contrast(1.5) brightness(0.8) sepia(0.2)' }}
+                  src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=1200" 
+                  alt="Legendary Training Gear" 
+                  className="w-full h-auto object-cover contrast-125 brightness-110 saturate-150 group-hover:scale-110 transition-all duration-1000"
                 />
-                {/* Poster Text Overlay - Straightened */}
+                {/* Poster Text Overlay */}
                 <div className="absolute inset-0 flex flex-col justify-start p-6 pointer-events-none">
                    <div className="bg-[#d32f2f] text-white font-comic text-4xl sm:text-6xl px-4 py-1 self-start border-4 border-black shadow-[4px_4px_0px_#000]">BE STRONG!</div>
                    <div className="bg-yellow-400 text-black font-handwriting text-xl sm:text-2xl px-2 py-1 self-start mt-2 border-2 border-black uppercase">Build Your Power!</div>
                 </div>
               </div>
               
-              {/* Stat Badges - Removed rotation */}
+              {/* Stat Badges */}
               <div className="absolute -bottom-8 sm:-bottom-12 -left-8 sm:-left-16 z-[100]">
                 <StatBadge 
                   value={120} 

@@ -1,15 +1,16 @@
+
 import React from 'react';
 import { MEMBERSHIP_PLANS, SIGNUP_URL } from '../constants';
 
 const Memberships: React.FC = () => {
   return (
-    <section id="memberships" className="py-16 sm:py-24 px-4 sm:px-6 border-t-8 border-black">
+    <section id="memberships" className="py-16 sm:py-24 px-4 sm:px-6 border-t-8 border-black vintage-paper-texture">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-5xl sm:text-7xl font-comic text-[#d32f2f] uppercase drop-shadow-sm">
             CHOOSE YOUR SET!
           </h2>
-          <p className="font-typewriter text-lg sm:text-xl mt-4 max-w-2xl mx-auto text-black/60 uppercase">
+          <p className="font-typewriter text-lg sm:text-xl mt-4 max-w-2xl mx-auto text-black/60 uppercase font-bold">
             Select the training blueprint that matches your ambition.
           </p>
         </div>
@@ -18,7 +19,7 @@ const Memberships: React.FC = () => {
           {MEMBERSHIP_PLANS.map((plan) => (
             <div 
               key={plan.name}
-              className={`relative p-8 border-4 border-black transition-all vintage-paper-texture flex flex-col h-full ${
+              className={`relative p-8 border-4 border-black transition-all bg-white/40 backdrop-blur-md flex flex-col h-full ${
                 plan.isSpecial 
                 ? 'shadow-[12px_12px_0px_#d32f2f] border-[#d32f2f]' 
                 : 'shadow-[8px_8px_0px_#1a1a1a]'

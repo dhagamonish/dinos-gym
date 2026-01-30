@@ -1,10 +1,13 @@
+
 import { NavItem, MembershipPlan, Facility, Testimonial } from './types';
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'OUR STORY', href: '#about' },
   { label: 'THE METHOD', href: '#programs' },
-  { label: 'JOIN THE CHAMPS', href: '#memberships' },
-  { label: 'SUCCESS STORIES', href: '#testimonials' },
+  { label: 'CHAMPIONS', href: '#why-choose' },
+  { label: 'THE TOOLS', href: '#facilities' },
+  { label: 'JOIN', href: '#memberships' },
+  { label: 'SUCCESS', href: '#testimonials' },
+  { label: 'CONTACT', href: '#contact' },
 ];
 
 export const PROGRAMS = [
@@ -67,4 +70,4 @@ export const FACILITIES: Facility[] = [
 ];
 
 export const INSTAGRAM_URL = "https://www.instagram.com/dinos.gym.solihull/";
-export const SIGNUP_URL = "https://secure.ashbournemanagement.co.uk/signupUK/index.aspx?fn=DF80";
+export const SIGNUP_URL = "http://secure.ashbournemanagement.co.uk/signupUK/index.aspx?fn=DF80";

@@ -1,7 +1,7 @@
+
 import React from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
-import About from './components/About.tsx';
 import Programs from './components/Programs.tsx';
 import WhyChoose from './components/WhyChoose.tsx';
 import Facilities from './components/Facilities.tsx';
@@ -21,10 +21,6 @@ const App: React.FC = () => {
         <Hero />
         
         <AnimateOnScroll variant="up" delay={100}>
-          <About />
-        </AnimateOnScroll>
-        
-        <AnimateOnScroll variant="up" delay={200}>
           <Programs />
         </AnimateOnScroll>
         

@@ -1,11 +1,15 @@
+
 import React from 'react';
 import { Star } from 'lucide-react';
 import { TESTIMONIALS } from '../constants';
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="py-24 px-6 border-t-8 border-black relative">
-      <div className="max-w-7xl mx-auto">
+    <section id="testimonials" className="py-24 px-6 border-t-8 border-black relative vintage-paper-texture">
+      {/* Texture Layer */}
+      <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-8xl font-comic text-black mb-4">
             THEY <span className="text-[#d32f2f]">PROVED</span> IT!
@@ -42,7 +46,7 @@ const Testimonials: React.FC = () => {
                 <div className="absolute -top-2 -left-2 text-[#d32f2f] opacity-20">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H11.017V21H14.017ZM5.017 21L5.017 18C5.017 16.8954 5.91243 16 7.017 16H10.017C10.5693 16 11.017 15.5523 11.017 15V9C11.017 8.44772 10.5693 8 10.017 8H7.017C6.46472 8 6.017 8.44772 6.017 9V12C6.017 12.5523 5.56929 13 5.017 13H2.017V21H5.017Z" /></svg>
                 </div>
-                <p className="font-typewriter text-sm leading-relaxed text-black/80 pl-6 mb-6">
+                <p className="font-typewriter text-sm leading-relaxed text-black/80 pl-6 mb-6 font-bold">
                   {t.quote}
                 </p>
               </div>

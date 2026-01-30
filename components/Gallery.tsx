@@ -47,13 +47,15 @@ const Gallery: React.FC = () => {
   }, [selectedIndex, handleNext, handlePrev]);
 
   return (
-    <section id="gallery" className="py-24 border-y-8 border-black relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="gallery" className="py-24 border-y-8 border-black relative vintage-paper-texture">
+      <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/pinstripe-light.png')]"></div>
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-6xl md:text-8xl font-comic text-black mb-2">
             THE <span className="text-[#d32f2f]">WALL</span> OF IRON
           </h2>
-          <p className="font-typewriter text-xl text-black/60 uppercase tracking-tighter">Snapshots from the dungeon floor</p>
+          <p className="font-typewriter text-xl text-black/60 uppercase tracking-tighter font-bold">Snapshots from the dungeon floor</p>
         </div>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -66,7 +68,7 @@ const Gallery: React.FC = () => {
               <img 
                 src={src} 
                 alt={`Gallery ${i}`} 
-                className="w-full h-auto object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-500"
+                className="w-full h-auto object-cover contrast-125 brightness-100 saturate-125 transition-all duration-500"
               />
               <div className="absolute bottom-4 right-4 bg-[#d32f2f] text-white px-2 py-1 font-comic text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                 VIEW LARGE
@@ -141,7 +143,7 @@ const Gallery: React.FC = () => {
               <img 
                 src={images[selectedIndex]} 
                 alt={`Selected archive image ${selectedIndex + 1}`} 
-                className="max-h-[75vh] w-auto grayscale contrast-125 brightness-110 border-4 border-black/10"
+                className="max-h-[75vh] w-auto contrast-125 brightness-110 saturate-150 border-4 border-black/10"
               />
               
               {/* Overlay Badges */}
