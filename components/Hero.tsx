@@ -37,32 +37,28 @@ const StatBadge: React.FC<{
 const Hero: React.FC = () => {
   const [year, setYear] = useState(1990);
   const [tagline] = useState('Home of Iron');
-  const [isCounting, setIsCounting] = useState(false);
 
   useEffect(() => {
-    // Start the animation after a short delay
-    const startTimer = setTimeout(() => {
-      setIsCounting(true);
+    const timer = setTimeout(() => {
       const interval = setInterval(() => {
         setYear((prev) => {
           if (prev >= 1994) {
             clearInterval(interval);
-            setIsCounting(false);
             return 1994;
           }
           return prev + 1;
         });
-      }, 400); // Slower, more deliberate count
+      }, 300);
       return () => clearInterval(interval);
-    }, 1200);
-    return () => clearTimeout(startTimer);
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
       
-      {/* Massive Background Decoration */}
+      {/* Massive Background Decoration - Straight Alignment */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[12vw] lg:text-[18vw] text-black/[0.03] leading-none pointer-events-none select-none whitespace-nowrap z-0">
         DINO'S GYM
       </div>
@@ -72,15 +68,8 @@ const Hero: React.FC = () => {
           <AnimateOnScroll variant="left" delay={100}>
             <div className="inline-flex items-center gap-2 mb-6 justify-center lg:justify-start">
               <span className="w-8 sm:w-12 h-[4px] bg-[#d32f2f]"></span>
-              <span className="font-comic text-2xl sm:text-3xl text-[#d32f2f] uppercase tracking-widest flex items-center gap-2">
-                Est. 
-                <span 
-                  className={`inline-block min-w-[1.2em] transition-all duration-300 transform ${
-                    isCounting ? 'scale-110 text-black' : 'scale-100'
-                  }`}
-                >
-                  {year}
-                </span>
+              <span className="font-comic text-2xl sm:text-3xl text-[#d32f2f] uppercase tracking-widest">
+                Est. <span className="inline-block min-w-[1.2em]">{year}</span>
               </span>
             </div>
           </AnimateOnScroll>
@@ -124,6 +113,7 @@ const Hero: React.FC = () => {
 
         <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
           <AnimateOnScroll variant="scale" delay={400}>
+            {/* Removed rotation - straight container */}
             <div className="relative border-4 sm:border-8 border-black p-2 bg-white/40 backdrop-blur-sm shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[20px_20px_0px_#1a1a1a] group">
               <div className="overflow-hidden border-2 border-black">
                 <img 
@@ -132,12 +122,14 @@ const Hero: React.FC = () => {
                   className="w-full h-auto object-cover contrast-150 brightness-90 grayscale group-hover:grayscale-0 transition-all duration-1000"
                   style={{ filter: 'grayscale(1) contrast(1.5) brightness(0.8) sepia(0.2)' }}
                 />
+                {/* Poster Text Overlay - Straightened */}
                 <div className="absolute inset-0 flex flex-col justify-start p-6 pointer-events-none">
                    <div className="bg-[#d32f2f] text-white font-comic text-4xl sm:text-6xl px-4 py-1 self-start border-4 border-black shadow-[4px_4px_0px_#000]">BE STRONG!</div>
                    <div className="bg-yellow-400 text-black font-handwriting text-xl sm:text-2xl px-2 py-1 self-start mt-2 border-2 border-black uppercase">Build Your Power!</div>
                 </div>
               </div>
               
+              {/* Stat Badges - Removed rotation */}
               <div className="absolute -bottom-8 sm:-bottom-12 -left-8 sm:-left-16 z-[100]">
                 <StatBadge 
                   value={120} 
