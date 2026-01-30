@@ -6,12 +6,12 @@ const Gallery: React.FC = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const images = [
-    'https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?q=80&w=800',
-    'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800',
-    'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=800',
-    'https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=800',
-    'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800',
-    'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=800',
+    'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
   ];
 
   const handleNext = useCallback(() => {
@@ -61,16 +61,14 @@ const Gallery: React.FC = () => {
             <div 
               key={i} 
               onClick={() => setSelectedIndex(i)}
-              className={`relative group overflow-hidden border-4 border-black bg-white/40 backdrop-blur-sm p-2 break-inside-avoid shadow-[8px_8px_0px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 hover:shadow-[12px_12px_0px_rgba(0,0,0,0.2)] cursor-zoom-in ${
-                i % 2 === 0 ? 'rotate-1' : '-rotate-1'
-              }`}
+              className={`relative group overflow-hidden border-4 border-black bg-white/40 backdrop-blur-sm p-2 break-inside-avoid shadow-[8px_8px_0px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-2 hover:shadow-[12px_12px_0px_rgba(0,0,0,0.2)] cursor-zoom-in`}
             >
               <img 
                 src={src} 
                 alt={`Gallery ${i}`} 
                 className="w-full h-auto object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-500"
               />
-              <div className="absolute bottom-4 right-4 bg-[#d32f2f] text-white px-2 py-1 font-comic text-sm transform rotate-12 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-4 right-4 bg-[#d32f2f] text-white px-2 py-1 font-comic text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                 VIEW LARGE
               </div>
             </div>
@@ -139,7 +137,7 @@ const Gallery: React.FC = () => {
             </div>
 
             {/* Image Container */}
-            <div className="border-8 border-black bg-white p-3 shadow-[20px_20px_0px_#d32f2f] transform rotate-1 animate-zoom-in-up">
+            <div className="border-8 border-black bg-white p-3 shadow-[20px_20px_0px_#d32f2f] animate-zoom-in-up">
               <img 
                 src={images[selectedIndex]} 
                 alt={`Selected archive image ${selectedIndex + 1}`} 
@@ -147,11 +145,11 @@ const Gallery: React.FC = () => {
               />
               
               {/* Overlay Badges */}
-              <div className="absolute -top-6 -right-6 bg-[#d32f2f] text-white border-4 border-black px-4 py-2 font-comic text-xl rotate-6 shadow-[4px_4px_0px_#000]">
+              <div className="absolute -top-6 -right-6 bg-[#d32f2f] text-white border-4 border-black px-4 py-2 font-comic text-xl shadow-[4px_4px_0px_#000]">
                 IMAGE {selectedIndex + 1} / {images.length}
               </div>
               
-              <div className="absolute -bottom-6 -left-6 bg-yellow-400 border-4 border-black px-6 py-2 font-comic text-2xl -rotate-6 shadow-[6px_6px_0px_#000]">
+              <div className="absolute -bottom-6 -left-6 bg-yellow-400 border-4 border-black px-6 py-2 font-comic text-2xl shadow-[6px_6px_0px_#000]">
                 TRUE STRENGTH!
               </div>
             </div>

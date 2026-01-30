@@ -19,9 +19,7 @@ const Testimonials: React.FC = () => {
           {TESTIMONIALS.map((t, i) => (
             <div 
               key={i} 
-              className={`bg-white/40 backdrop-blur-md border-4 border-black p-8 relative shadow-[10px_10px_0px_rgba(0,0,0,0.1)] transition-transform hover:scale-105 ${
-                i % 2 === 0 ? 'rotate-[1.5deg]' : 'rotate-[-1.5deg]'
-              }`}
+              className={`bg-white/40 backdrop-blur-md border-4 border-black p-8 relative shadow-[10px_10px_0px_rgba(0,0,0,0.1)] transition-transform hover:scale-105`}
             >
               {/* Paper Clip Visual */}
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-12 border-4 border-black border-b-0 rounded-t-xl opacity-20"></div>
@@ -53,7 +51,7 @@ const Testimonials: React.FC = () => {
                 {[1,2,3,4,5].map(s => <Star key={s} size={16} fill="currentColor" />)}
               </div>
 
-              <div className="absolute -bottom-3 right-4 bg-black text-white px-2 py-1 font-comic text-xs rotate-3">
+              <div className="absolute -bottom-3 right-4 bg-black text-white px-2 py-1 font-comic text-xs">
                 VERIFIED STORY
               </div>
             </div>

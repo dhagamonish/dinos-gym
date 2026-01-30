@@ -1,40 +1,70 @@
 import React, { useState, useEffect } from 'react';
-import { SIGNUP_URL } from '../constants';
-import AnimateOnScroll from './AnimateOnScroll';
+import { SIGNUP_URL } from '../constants.tsx';
+import AnimateOnScroll from './AnimateOnScroll.tsx';
+
+const StatBadge: React.FC<{ 
+  value: number; 
+  label: React.ReactNode; 
+  className: string; 
+  shadowClass: string;
+}> = ({ value, label, className, shadowClass }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const displayValue = isHovered ? Math.floor(value * 1.1) : value;
+
+  return (
+    <div 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`${className} p-3 sm:p-5 border-4 border-black transition-all duration-300 cursor-default ${shadowClass} relative ${
+        isHovered ? '-translate-y-2 scale-105 z-[70]' : 'z-[60]'
+      }`}
+    >
+      <div className="text-2xl sm:text-4xl font-comic tabular-nums transition-all duration-300 leading-none">
+        {displayValue}+
+      </div>
+      <div className="text-[8px] sm:text-[10px] font-bold uppercase leading-tight mt-1">{label}</div>
+      
+      {/* Dynamic Tag */}
+      <div className={`absolute -top-3 -right-3 bg-yellow-400 text-black border-2 border-black px-2 py-0.5 font-comic text-[10px] transition-all duration-300 ${
+        isHovered ? 'opacity-100 scale-100 animate-bounce' : 'opacity-0 scale-50'
+      }`}>
+        PEAK!
+      </div>
+    </div>
+  );
+};
 
 const Hero: React.FC = () => {
   const [year, setYear] = useState(1990);
   const [tagline] = useState('Home of Iron');
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [isCounting, setIsCounting] = useState(false);
 
   useEffect(() => {
-    // Year Counter Animation
-    const timer = setTimeout(() => {
+    // Start the animation after a short delay
+    const startTimer = setTimeout(() => {
+      setIsCounting(true);
       const interval = setInterval(() => {
         setYear((prev) => {
           if (prev >= 1994) {
             clearInterval(interval);
+            setIsCounting(false);
             return 1994;
           }
           return prev + 1;
         });
-      }, 300);
+      }, 400); // Slower, more deliberate count
       return () => clearInterval(interval);
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    }, 1200);
+    return () => clearTimeout(startTimer);
   }, []);
 
   return (
     <section id="home" className="relative min-h-[90vh] flex items-center pt-24 pb-12 px-4 sm:px-6 overflow-hidden">
-      {/* Gritty Texture Overlay */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
       
       {/* Massive Background Decoration */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[15vw] lg:text-[25vw] text-black/[0.03] leading-none pointer-events-none select-none whitespace-nowrap z-0">
-        SOLIHULL
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-heading text-[12vw] lg:text-[18vw] text-black/[0.03] leading-none pointer-events-none select-none whitespace-nowrap z-0">
+        DINO'S GYM
       </div>
       
       <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center relative z-10">
@@ -42,8 +72,15 @@ const Hero: React.FC = () => {
           <AnimateOnScroll variant="left" delay={100}>
             <div className="inline-flex items-center gap-2 mb-6 justify-center lg:justify-start">
               <span className="w-8 sm:w-12 h-[4px] bg-[#d32f2f]"></span>
-              <span className="font-comic text-2xl sm:text-3xl text-[#d32f2f] uppercase tracking-widest">
-                Est. <span className="inline-block min-w-[1.2em]">{year}</span>
+              <span className="font-comic text-2xl sm:text-3xl text-[#d32f2f] uppercase tracking-widest flex items-center gap-2">
+                Est. 
+                <span 
+                  className={`inline-block min-w-[1.2em] transition-all duration-300 transform ${
+                    isCounting ? 'scale-110 text-black' : 'scale-100'
+                  }`}
+                >
+                  {year}
+                </span>
               </span>
             </div>
           </AnimateOnScroll>
@@ -53,9 +90,9 @@ const Hero: React.FC = () => {
               Solihull's <br className="hidden sm:block" />
               <span className="text-[#d32f2f] relative inline-block">
                 Original
-                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-black/10 -rotate-1"></div>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-black/10"></div>
               </span> <br/>
-              <span className={`transition-all duration-500 inline-block ${isAnimating ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
+              <span className="transition-all duration-500 inline-block opacity-100 scale-100">
                 {tagline}
               </span>
             </h1>
@@ -87,21 +124,39 @@ const Hero: React.FC = () => {
 
         <div className="relative mt-8 lg:mt-0 px-4 sm:px-0">
           <AnimateOnScroll variant="scale" delay={400}>
-            <div className="relative border-4 sm:border-8 border-black p-2 bg-white/40 backdrop-blur-sm transform rotate-3 shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[20px_20px_0px_#1a1a1a] group">
-              <img 
-                src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200" 
-                alt="Hardcore Bodybuilding Gym Solihull" 
-                className="w-full h-auto grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-700"
-              />
+            <div className="relative border-4 sm:border-8 border-black p-2 bg-white/40 backdrop-blur-sm shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[20px_20px_0px_#1a1a1a] group">
+              <div className="overflow-hidden border-2 border-black">
+                <img 
+                  src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?auto=format&fit=crop&q=80&w=1200" 
+                  alt="BE STRONG - Bodybuilding Legacy" 
+                  className="w-full h-auto object-cover contrast-150 brightness-90 grayscale group-hover:grayscale-0 transition-all duration-1000"
+                  style={{ filter: 'grayscale(1) contrast(1.5) brightness(0.8) sepia(0.2)' }}
+                />
+                <div className="absolute inset-0 flex flex-col justify-start p-6 pointer-events-none">
+                   <div className="bg-[#d32f2f] text-white font-comic text-4xl sm:text-6xl px-4 py-1 self-start border-4 border-black shadow-[4px_4px_0px_#000]">BE STRONG!</div>
+                   <div className="bg-yellow-400 text-black font-handwriting text-xl sm:text-2xl px-2 py-1 self-start mt-2 border-2 border-black uppercase">Build Your Power!</div>
+                </div>
+              </div>
               
-              {/* Retro Badge */}
-              <div className="absolute -bottom-6 sm:-bottom-10 -right-4 sm:-right-10 bg-yellow-400 text-black border-2 sm:border-4 border-black p-4 sm:p-8 font-comic text-3xl sm:text-6xl transform -rotate-12 shadow-[4px_4px_0px_#000] sm:shadow-[10px_10px_0px_#000] animate-pulse z-20">
-                REAL <br className="hidden sm:block" /> IRON
+              <div className="absolute -bottom-8 sm:-bottom-12 -left-8 sm:-left-16 z-[100]">
+                <StatBadge 
+                  value={120} 
+                  label={<>ELITE <br/> COACHES</>} 
+                  className="bg-[#d32f2f] text-white" 
+                  shadowClass="shadow-[4px_4px_0px_#000] sm:shadow-[8px_8px_0px_#000]"
+                />
+              </div>
+
+              <div className="absolute top-1/2 -right-8 sm:-right-16 transform -translate-y-1/2 z-[100]">
+                <StatBadge 
+                  value={1960} 
+                  label={<>CHAMPION <br/> MEMBERS</>} 
+                  className="bg-[#1a1a1a] text-white" 
+                  shadowClass="shadow-[4px_4px_0px_#d32f2f] sm:shadow-[8px_8px_0px_#d32f2f]"
+                />
               </div>
             </div>
           </AnimateOnScroll>
-          
-          {/* Subtle Halftone Background Accent */}
           <div className="absolute -top-6 sm:-top-10 -left-6 sm:-left-10 w-24 sm:w-32 h-24 sm:h-32 bg-[url('https://www.transparenttextures.com/patterns/halftone.png')] opacity-30 pointer-events-none"></div>
         </div>
       </div>

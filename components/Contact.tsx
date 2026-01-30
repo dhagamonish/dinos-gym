@@ -8,14 +8,16 @@ const Contact: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           
-          <div className="vintage-paper-texture border-4 sm:border-8 border-black p-6 sm:p-10 shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[15px_15px_0px_#1a1a1a] md:transform md:-rotate-1">
+          {/* Removed rotate */}
+          <div className="vintage-paper-texture border-4 sm:border-8 border-black p-6 sm:p-10 shadow-[10px_10px_0px_#1a1a1a] sm:shadow-[15px_15px_0px_#1a1a1a]">
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-comic text-[#d32f2f] mb-6 sm:mb-8 leading-none uppercase text-center lg:text-left">
               REACH OUT! ☎️
             </h2>
             
             <div className="space-y-8 sm:space-y-10">
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 border-b-2 border-dotted border-black pb-6 text-center sm:text-left">
-                <div className="bg-[#d32f2f] p-3 border-2 border-black text-white rotate-3">
+                {/* Removed rotate */}
+                <div className="bg-[#d32f2f] p-3 border-2 border-black text-white">
                   <MapPin size={28} sm:size={32} />
                 </div>
                 <div>
@@ -25,7 +27,8 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 border-b-2 border-dotted border-black pb-6 text-center sm:text-left">
-                <div className="bg-[#26a69a] p-3 border-2 border-black text-white -rotate-3">
+                {/* Removed rotate */}
+                <div className="bg-[#26a69a] p-3 border-2 border-black text-white">
                   <Clock size={28} sm:size={32} />
                 </div>
                 <div className="w-full">
@@ -39,7 +42,8 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6 text-center sm:text-left">
-                <div className="bg-yellow-400 p-3 border-2 border-black text-black rotate-2">
+                {/* Removed rotate */}
+                <div className="bg-yellow-400 p-3 border-2 border-black text-black">
                   <Phone size={28} sm:size={32} />
                 </div>
                 <div>
@@ -51,6 +55,7 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t-4 border-black flex justify-center lg:justify-start gap-4 sm:gap-6">
+              {/* Removed rotate */}
               <a href={INSTAGRAM_URL} className="bg-white/50 border-2 sm:border-4 border-black p-3 sm:p-4 hover:bg-[#d32f2f] hover:text-white transition-all transform hover:scale-110">
                 <Instagram size={24} sm:size={32} />
               </a>
@@ -61,7 +66,8 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="relative group mt-8 lg:mt-0 px-2 sm:px-0">
-            <div className="absolute inset-0 bg-[#d32f2f] transform md:rotate-2 -z-10 border-4 border-black"></div>
+            {/* Removed rotate */}
+            <div className="absolute inset-0 bg-[#d32f2f] -z-10 border-4 border-black"></div>
             <div className="h-[400px] sm:h-[600px] border-4 border-black relative overflow-hidden bg-white/40 shadow-[8px_8px_0px_rgba(0,0,0,0.1)] sm:shadow-[12px_12px_0px_rgba(0,0,0,0.1)]">
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-paper.png')] opacity-30 pointer-events-none z-10"></div>
               

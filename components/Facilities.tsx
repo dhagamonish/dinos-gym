@@ -20,15 +20,13 @@ const Facilities: React.FC = () => {
           {FACILITIES.map((facility, i) => (
             <div 
               key={facility.title}
-              className={`bg-white/40 backdrop-blur-md border-4 border-black p-4 shadow-[6px_6px_0px_#1a1a1a] sm:shadow-[10px_10px_0px_#1a1a1a] transition-transform hover:-translate-y-2 hover:rotate-1 ${
-                i % 2 === 0 ? 'rotate-[-1deg]' : 'rotate-[1deg]'
-              }`}
+              className={`bg-white/40 backdrop-blur-md border-4 border-black p-4 shadow-[6px_6px_0px_#1a1a1a] sm:shadow-[10px_10px_0px_#1a1a1a] transition-transform hover:-translate-y-2`}
             >
               <div className="aspect-square mb-4 border-2 border-black overflow-hidden relative group">
                 <img 
                   src={facility.imageUrl}
                   alt={facility.title}
-                  className="w-full h-full object-cover grayscale contrast-125 transition-all duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover grayscale contrast-125 brightness-90 group-hover:grayscale-0 transition-all duration-500"
                 />
                 <div className="absolute inset-0 bg-[#d32f2f]/10 group-hover:bg-transparent transition-colors"></div>
               </div>
@@ -37,20 +35,20 @@ const Facilities: React.FC = () => {
                 {facility.title}
               </h3>
               
-              <p className="font-typewriter text-[10px] sm:text-xs leading-tight text-black/80 mb-4">
+              <p className="font-typewriter text-[10px] sm:text-sm leading-tight text-black/80 mb-4">
                 {facility.description}
               </p>
               
               <div className="border-t-2 border-dotted border-black pt-2 flex justify-between items-center">
                 <span className="font-comic text-[10px] sm:text-sm tracking-widest text-black/40">REF: DNO-{100 + i}</span>
-                <span className="font-handwriting text-lg sm:text-xl text-[#d32f2f] -rotate-12">Built to Last!</span>
+                <span className="font-handwriting text-lg sm:text-xl text-[#d32f2f]">Built to Last!</span>
               </div>
             </div>
           ))}
         </div>
 
         <div className="mt-12 sm:mt-20 text-center">
-          <div className="inline-block bg-[#1a1a1a] text-white p-6 sm:p-8 border-4 border-black transform -rotate-1 shadow-[8px_8px_0px_#d32f2f] sm:shadow-[12px_12px_0px_#d32f2f]">
+          <div className="inline-block bg-[#1a1a1a] text-white p-6 sm:p-8 border-4 border-black shadow-[8px_8px_0px_#d32f2f] sm:shadow-[12px_12px_0px_#d32f2f]">
              <p className="font-comic text-2xl sm:text-3xl mb-2">"THE BEST EQUIPMENT IN THE MIDLANDS"</p>
              <p className="font-typewriter text-[10px] sm:text-sm uppercase">— BODYBUILDING MONTHLY, 1998</p>
           </div>

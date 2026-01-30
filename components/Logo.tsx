@@ -4,7 +4,7 @@ const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => 
   return (
     <div className={`relative flex items-center justify-center group ${className}`}>
       {/* Main Circular Logo Container */}
-      <div className="w-full h-full relative transform transition-transform group-hover:rotate-12 duration-500">
+      <div className="w-full h-full relative transform transition-transform group-hover:scale-105 duration-500">
         <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-[4px_4px_0px_rgba(0,0,0,1)]">
           {/* Yellow Background and Black Border */}
           <circle cx="50" cy="50" r="46" fill="#fbc02d" stroke="black" strokeWidth="4" />
@@ -44,8 +44,8 @@ const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => 
         </svg>
       </div>
 
-      {/* Retro "EST 1994" Badge */}
-      <div className="absolute -top-3 -left-3 bg-white text-black border-2 border-black font-comic text-[10px] px-1 transform rotate-[-10deg] shadow-[2px_2px_0px_#000] z-10 pointer-events-none">
+      {/* Retro "EST 1994" Badge - Removed rotation */}
+      <div className="absolute -top-3 -left-3 bg-white text-black border-2 border-black font-comic text-[10px] px-1 shadow-[2px_2px_0px_#000] z-10 pointer-events-none">
         EST 1994
       </div>
     </div>

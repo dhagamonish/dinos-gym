@@ -62,7 +62,7 @@ const ChatBot: React.FC = () => {
         Dino's Gym Solihull Info:
         - Location: Unit 1-3, Cranmore Blvd, Solihull, B90 4RR.
         - Est: 1994 by local legends.
-        - Philosophy: Hardcore, old-school, iron weights, zero ego policy.
+        - Philosophy: Hardcore, old-school, iron weights, zero ego policy, unisex and inclusive for all serious athletes.
         - Equipment: Cybex, Hammer Strength, vintage specialized machines.
         - Programs: ${PROGRAMS.map(p => p.title + ': ' + p.desc).join(', ')}.
         - Memberships: ${MEMBERSHIP_PLANS.map(p => p.name + ' (£' + p.price + ')').join(', ')}.
@@ -85,6 +85,7 @@ const ChatBot: React.FC = () => {
           2. LANGUAGE: Use 90s bodybuilding slang (iron, dungeon, gains, pure effort, the method).
           3. IDENTITY: You are a coach. You live for the gym. 
           4. NO ITALICS: Do not use any italics or underscores for emphasis. Use bolding with ** if needed.
+          5. INCLUSIVITY: Our gym is for EVERYONE who is serious about training. NEVER use gendered tropes like "look like a man" or "don't be a girl". Focus on "disciples", "athletes", "legends", and "champions".
 
           STRICT SAFETY GUARDRAILS (ZERO TOLERANCE):
           - CATEGORY 1: Non-Gym Topics (Politics, Weather, Movies, News, etc.). 
@@ -116,10 +117,10 @@ const ChatBot: React.FC = () => {
 
   return (
     <div className="fixed bottom-6 right-6 z-[70] font-comic">
-      {/* Toggle Button */}
+      {/* Toggle Button - Removed rotate toggle */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-16 h-16 rounded-full border-4 border-black bg-yellow-400 flex items-center justify-center shadow-[6px_6px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all ${isOpen ? 'rotate-90' : ''}`}
+        className={`w-16 h-16 rounded-full border-4 border-black bg-yellow-400 flex items-center justify-center shadow-[6px_6px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all`}
       >
         {isOpen ? <X size={32} /> : <MessageSquare size={32} />}
       </button>
@@ -140,10 +141,11 @@ const ChatBot: React.FC = () => {
           <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]">
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                {/* Removed rotate */}
                 <div className={`max-w-[85%] p-3 border-2 border-black relative ${
                   m.role === 'user' 
-                  ? 'bg-blue-100 text-black font-handwriting rotate-1 shadow-[4px_4px_0px_#000]' 
-                  : 'bg-[#fdf1d6] text-black font-typewriter -rotate-1 shadow-[4px_4px_0px_#d32f2f]'
+                  ? 'bg-blue-100 text-black font-handwriting shadow-[4px_4px_0px_#000]' 
+                  : 'bg-[#fdf1d6] text-black font-typewriter shadow-[4px_4px_0px_#d32f2f]'
                 }`}>
                   <div className="flex items-center gap-2 mb-1 border-b border-black/10 pb-1">
                     {m.role === 'user' ? <User size={12} /> : <Dumbbell size={12} />}

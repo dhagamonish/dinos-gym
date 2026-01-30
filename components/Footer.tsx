@@ -5,8 +5,8 @@ import { NAV_ITEMS, INSTAGRAM_URL } from '../constants';
 const Footer: React.FC = () => {
   return (
     <footer className="border-t-8 border-black pt-12 sm:pt-20 pb-8 sm:pb-10 relative overflow-hidden vintage-paper-texture px-4 sm:px-6">
-      {/* Decorative Stamp - Hidden on very small screens to save space */}
-      <div className="absolute top-10 right-10 w-32 h-32 sm:w-48 sm:h-48 opacity-10 rotate-12 pointer-events-none hidden sm:flex">
+      {/* Decorative Stamp - Removed rotate */}
+      <div className="absolute top-10 right-10 w-32 h-32 sm:w-48 sm:h-48 opacity-10 pointer-events-none hidden sm:flex">
         <div className="w-full h-full border-4 sm:border-8 border-[#d32f2f] rounded-full flex items-center justify-center text-[#d32f2f] font-comic text-2xl sm:text-4xl text-center leading-none p-4 uppercase">
           Guaranteed <br/> Results!
         </div>

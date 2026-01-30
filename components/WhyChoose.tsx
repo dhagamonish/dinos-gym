@@ -1,37 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Trophy, Target, Users, Zap } from 'lucide-react';
-
-const StatBadge: React.FC<{ 
-  value: number; 
-  label: React.ReactNode; 
-  className: string; 
-  shadowClass: string;
-}> = ({ value, label, className, shadowClass }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const displayValue = isHovered ? Math.floor(value * 1.1) : value;
-
-  return (
-    <div 
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`${className} p-4 sm:p-6 border-4 border-black transition-all duration-300 cursor-default ${shadowClass} relative ${
-        isHovered ? '-translate-y-4 sm:-translate-y-6 scale-105 sm:scale-110 z-30' : 'z-10'
-      }`}
-    >
-      <div className="text-3xl sm:text-5xl font-comic tabular-nums transition-all duration-300">
-        {displayValue}+
-      </div>
-      <div className="text-[10px] sm:text-xs font-bold uppercase leading-tight">{label}</div>
-      
-      {/* Dynamic Tag */}
-      <div className={`absolute -top-3 -right-3 bg-yellow-400 text-black border-2 border-black px-2 py-0.5 font-comic text-[10px] sm:text-[12px] transition-all duration-300 ${
-        isHovered ? 'opacity-100 scale-100 rotate-12 animate-bounce' : 'opacity-0 scale-50'
-      }`}>
-        PEAK!
-      </div>
-    </div>
-  );
-};
 
 const WhyChoose: React.FC = () => {
   return (
@@ -40,7 +8,8 @@ const WhyChoose: React.FC = () => {
       
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
         <div className="text-center lg:text-left">
-          <h2 className="text-5xl sm:text-6xl md:text-8xl font-comic text-[#d32f2f] mb-6 sm:mb-8 leading-none transform sm:rotate-1 drop-shadow-md lg:drop-shadow-[4px_4px_0px_#000]">
+          {/* Removed rotate */}
+          <h2 className="text-5xl sm:text-6xl md:text-8xl font-comic text-[#d32f2f] mb-6 sm:mb-8 leading-none drop-shadow-md lg:drop-shadow-[4px_4px_0px_#000]">
             WE ARE CHAMPIONS!
           </h2>
           
@@ -65,31 +34,13 @@ const WhyChoose: React.FC = () => {
         </div>
 
         <div className="relative mt-12 lg:mt-0 px-2 sm:px-4">
-          <div className="retro-border bg-white/40 backdrop-blur-sm p-2 transform sm:rotate-[-2deg] relative shadow-[10px_10px_0px_rgba(0,0,0,0.05)]">
+          {/* Removed rotate */}
+          <div className="retro-border bg-white/40 backdrop-blur-sm p-2 relative shadow-[10px_10px_0px_rgba(0,0,0,0.05)]">
             <img 
-              src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=1200" 
-              alt="Hardcore Gym Environment" 
+              src="https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?auto=format&fit=crop&q=80&w=1200" 
+              alt="Champion Physique Goal" 
               className="grayscale contrast-125 brightness-90 w-full h-auto"
             />
-            
-            {/* Interactive Stat Badges - Repositioned for mobile */}
-            <div className="absolute -bottom-6 sm:-bottom-10 left-0 sm:-left-10 z-20">
-              <StatBadge 
-                value={120} 
-                label={<>ELITE <br/> COACHES</>} 
-                className="bg-[#d32f2f] text-white rotate-[-5deg]" 
-                shadowClass="shadow-[4px_4px_0px_#000] sm:shadow-[8px_8px_0px_#000]"
-              />
-            </div>
-
-            <div className="absolute top-1/2 right-0 sm:-right-10 transform -translate-y-1/2 z-20">
-              <StatBadge 
-                value={1960} 
-                label={<>CHAMPION <br/> MEMBERS</>} 
-                className="bg-[#1a1a1a] text-white rotate-[5deg]" 
-                shadowClass="shadow-[4px_4px_0px_#d32f2f] sm:shadow-[8px_8px_0px_#d32f2f]"
-              />
-            </div>
           </div>
           
           <div className="absolute -top-4 -right-4 w-16 h-16 border-t-4 border-right-4 border-black opacity-20 hidden sm:block"></div>
