@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => {
@@ -44,8 +45,8 @@ const Logo: React.FC<{ className?: string }> = ({ className = "w-20 h-20" }) => 
         </svg>
       </div>
 
-      {/* Retro "EST 1994" Badge - Removed rotation */}
-      <div className="absolute -top-3 -left-3 bg-white text-black border-2 border-black font-comic text-[10px] px-1 shadow-[2px_2px_0px_#000] z-10 pointer-events-none">
+      {/* Retro "EST 1994" Badge - Bolder and clearly positioned */}
+      <div className="absolute top-0 left-0 bg-white text-black border-[3px] border-black font-comic text-[12px] sm:text-[14px] px-1.5 shadow-[2px_2px_0px_#000] z-10 pointer-events-none transform -rotate-6">
         EST 1994
       </div>
     </div>

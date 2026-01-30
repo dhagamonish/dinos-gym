@@ -5,7 +5,7 @@ import { TESTIMONIALS } from '../constants';
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="py-24 px-6 border-t-8 border-black relative vintage-paper-texture">
+    <section id="testimonials" className="py-24 px-6 relative vintage-paper-texture">
       {/* Texture Layer */}
       <div className="absolute inset-0 opacity-5 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/notebook.png')]"></div>
 

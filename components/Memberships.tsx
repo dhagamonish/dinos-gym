@@ -4,7 +4,7 @@ import { MEMBERSHIP_PLANS, SIGNUP_URL } from '../constants';
 
 const Memberships: React.FC = () => {
   return (
-    <section id="memberships" className="py-16 sm:py-24 px-4 sm:px-6 border-t-8 border-black vintage-paper-texture">
+    <section id="memberships" className="py-16 sm:py-24 px-4 sm:px-6 vintage-paper-texture">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-5xl sm:text-7xl font-comic text-[#d32f2f] uppercase drop-shadow-sm">
