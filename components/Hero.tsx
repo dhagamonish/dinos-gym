@@ -159,24 +159,24 @@ const Hero: React.FC = () => {
           </AnimateOnScroll>
         </div>
 
-        {/* Constrained container for the image to maintain visual quality */}
+        {/* Constrained container for the image to maintain visual quality and prevent tearing */}
         <div className="relative mt-8 lg:mt-0 px-4 sm:px-0 max-w-[480px] mx-auto lg:mx-0 lg:ml-auto">
           <AnimateOnScroll variant="scale" delay={400}>
-            <div className="relative border-4 sm:border-8 border-black p-2 bg-white/40 backdrop-blur-sm shadow-[15px_15px_0px_#000] group">
-              <div className="overflow-hidden border-2 border-black bg-[#f0e6d2] relative min-h-[250px] flex items-center justify-center">
-                {/* Updated Image with provided link for the Hero section */}
+            <div className="relative border-4 sm:border-8 border-black p-2 bg-white shadow-[15px_15px_0px_#000] group">
+              <div className="overflow-hidden border-2 border-black bg-white relative min-h-[250px] flex items-center justify-center">
+                {/* Updated Image with provided 'Mind and Body' poster link */}
                 <img 
-                  src="https://lh3.googleusercontent.com/d/1LW_VOk4uajQnIOIwDGq6ev4CDIv6xiKm" 
-                  alt="Vintage Bodybuilding Champion" 
-                  className="w-full h-auto object-contain contrast-[1.1] brightness-[1.02] saturate-[1.1] transition-all duration-1000 group-hover:scale-105"
+                  src="https://lh3.googleusercontent.com/d/1osoVlVxIIaXSNUZuIASr8-KJU4Pm6S9T" 
+                  alt="Mind and Body Vintage Poster" 
+                  className="w-full h-auto object-contain contrast-[1.1] brightness-[1.05] saturate-[1.2] transition-all duration-1000 group-hover:scale-105"
                   onError={(e) => {
                     // Failback if drive link fails
                     e.currentTarget.src = "https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?auto=format&fit=crop&q=80&w=800";
                   }}
                 />
                 
-                {/* Subtle Grain Overlay */}
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-paper.png')] opacity-30 pointer-events-none"></div>
+                {/* Subtle Grain Overlay for texture */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-paper.png')] opacity-20 pointer-events-none"></div>
               </div>
               
               {/* Stat Badges */}

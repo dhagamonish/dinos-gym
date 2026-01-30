@@ -43,12 +43,20 @@ const About: React.FC = () => {
           
           <div className="order-1 lg:order-2 relative px-4 sm:px-0">
             <div className="retro-border bg-white p-2 sm:p-3 shadow-[12px_12px_0px_#000] relative z-20">
-              <div className="overflow-hidden border-2 border-black">
+              <div className="overflow-hidden border-2 border-black bg-[#f0e6d2] relative min-h-[300px] flex items-center justify-center">
+                {/* Updated Image with provided link for the Legacy section */}
                 <img 
-                  src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=1200" 
-                  alt="Vintage Bodybuilding Legacy"
-                  className="w-full h-auto contrast-150 brightness-100 hover:scale-105 transition-all duration-700"
+                  src="https://lh3.googleusercontent.com/d/15Z2TYLndsVPVM5V_XSQ3eybiPKC8MhQe" 
+                  alt="Dino's Gym Hardcore Equipment" 
+                  className="w-full h-auto object-cover contrast-[1.2] brightness-[1.05] saturate-[1.1] transition-all duration-1000"
+                  onError={(e) => {
+                    // Fallback to gym floor image if link fails
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800";
+                  }}
                 />
+                
+                {/* Subtle Grain Overlay */}
+                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/old-paper.png')] opacity-30 pointer-events-none"></div>
               </div>
               <div className="absolute -bottom-6 sm:-bottom-10 -left-6 sm:-left-10 bg-yellow-400 text-black border-2 sm:border-4 border-black p-2 sm:p-4 font-comic text-xl sm:text-3xl shadow-[4px_4px_0px_#000] z-[80]">
                 ICONIC!

@@ -4,7 +4,7 @@ import { PROGRAMS, SIGNUP_URL } from '../constants.tsx';
 
 const Programs: React.FC = () => {
   return (
-    <section id="programs" className="py-16 sm:py-24 px-4 sm:px-6 relative vintage-paper-texture">
+    <section id="programs" className="pt-16 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 relative vintage-paper-texture">
       <div className="max-w-7xl mx-auto">
         <div className="relative p-2 sm:p-0">
           {/* Section Header */}
@@ -46,14 +46,14 @@ const Programs: React.FC = () => {
             </div>
           </div>
 
-          {/* Call to Action Footer */}
-          <div className="mt-16 sm:mt-24 border-t-4 border-black pt-10 sm:pt-12 flex flex-col md:flex-row items-center justify-between gap-8">
-            <p className="font-handwriting text-3xl sm:text-4xl text-black text-center md:text-left leading-tight">
+          {/* Call to Action Footer - Removed border and tightened spacing */}
+          <div className="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
+            <p className="font-handwriting text-3xl sm:text-4xl text-black text-center md:text-left leading-tight max-w-2xl">
               "Results guaranteed in 30 days or I'll personally spot your next set!"
             </p>
             <button 
               onClick={() => window.open(SIGNUP_URL, '_blank')}
-              className="w-full md:w-auto bg-[#d32f2f] text-white px-10 sm:px-14 py-5 sm:py-6 border-4 border-black font-comic text-3xl sm:text-5xl shadow-[8px_8px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-95"
+              className="w-full md:w-auto bg-[#d32f2f] text-white px-8 sm:px-10 py-3 sm:py-4 border-4 border-black font-comic text-2xl sm:text-3xl shadow-[6px_6px_0px_#000] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all active:scale-95 whitespace-nowrap"
             >
               ENROLL NOW!
             </button>

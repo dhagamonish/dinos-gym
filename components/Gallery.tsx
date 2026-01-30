@@ -10,7 +10,7 @@ const Gallery: React.FC = () => {
     'https://images.unsplash.com/photo-1593079831268-3381b0db4a77?auto=format&fit=crop&q=80&w=800',
     'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=800',
     'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&q=80&w=800',
-    'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&q=80&w=800',
+    'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=800',
     'https://images.unsplash.com/photo-1581009146145-b5ef03a7403f?auto=format&fit=crop&q=80&w=1200',
     'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
   ];
@@ -71,8 +71,12 @@ const Gallery: React.FC = () => {
             >
               <img 
                 src={src} 
-                alt={`Gallery ${i}`} 
+                alt={`Gallery ${i + 1}`} 
                 className="w-full h-auto object-cover contrast-125 brightness-100 saturate-125 transition-all duration-500"
+                onError={(e) => {
+                  // Robust fallback if any gallery image fails to load
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800";
+                }}
               />
               <div className="absolute bottom-4 right-4 bg-[#d32f2f] text-white px-2 py-1 font-comic text-sm opacity-0 group-hover:opacity-100 transition-opacity">
                 VIEW LARGE
@@ -148,6 +152,9 @@ const Gallery: React.FC = () => {
                 src={images[selectedIndex]} 
                 alt={`Selected archive image ${selectedIndex + 1}`} 
                 className="max-h-[75vh] w-auto contrast-125 brightness-110 saturate-150 border-4 border-black/10"
+                onError={(e) => {
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?auto=format&fit=crop&q=80&w=800";
+                }}
               />
               
               {/* Overlay Badges */}
